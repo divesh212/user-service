@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nagarro.nagp.msa2.userservice.entity.User;
+import com.nagarro.nagp.msa2.userservice.entity.UserDetails;
 import com.nagarro.nagp.msa2.userservice.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-	
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-	
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
 	@Autowired
 	UserService userService;
-	
+
 	@GetMapping("/{id}")
-	public User getUserById(@PathVariable("id") int id) {
+	public UserDetails getUserById(@PathVariable("id") int id) {
 		LOGGER.info("Get user request received for user id: {}", id);
 		return userService.getUser(id);
 	}

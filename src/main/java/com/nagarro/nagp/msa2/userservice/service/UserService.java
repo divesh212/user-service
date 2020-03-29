@@ -1,7 +1,7 @@
 package com.nagarro.nagp.msa2.userservice.service;
 
-import com.nagarro.nagp.msa2.userservice.entity.User;
+import com.nagarro.nagp.msa2.userservice.entity.UserDetails;
 
 public interface UserService {
-	User getUser(int id);
+	UserDetails getUser(int id);
 }
