@@ -5,7 +5,7 @@ metadata:
   labels:
     app: user-service
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: user-service
@@ -16,6 +16,22 @@ spec:
     spec:
       containers:
       - name: user-service
-        image: divesh212/user-service:tag1
+        image: divesh212/user-service2:tag1
+        env:
+        - name: MONGO_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_HOST
+              name: config-map
+        - name: MONGO_DB_PASS
+          valueFrom: 
+            secretKeyRef:
+              name: mongo-db-pass
+              key: password
+        - name: JAEGER_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: JAEGER_HOST
+              name: config-map
         ports:
         - containerPort: 8091

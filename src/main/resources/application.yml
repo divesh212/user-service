@@ -1,0 +1,17 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: userservice
+  data:
+    mongodb:
+      host: ${MONGO_HOST:localhost}
+      port: 27017
+      database: user-db
+      username: admin
+      password: ${MONGO_DB_PASS:admin}
+opentracing: 
+  jaeger:
+    udp-sender:
+      host: ${JAEGER_HOST:localhost}
+      port: 6831

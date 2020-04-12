@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nagarro.nagp.msa2.userservice.entity.UserDetails;
+import com.nagarro.nagp.msa2.userservice.repository.UserRepository;
 import com.nagarro.nagp.msa2.userservice.service.UserService;
 
 @RestController
@@ -19,10 +20,14 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
-
+	
+	@Autowired
+	UserRepository userRepository;
+	
 	@GetMapping("/{id}")
 	public UserDetails getUserById(@PathVariable("id") int id) {
 		LOGGER.info("Get user request received for user id: {}", id);
+		
 		return userService.getUser(id);
 	}
 
